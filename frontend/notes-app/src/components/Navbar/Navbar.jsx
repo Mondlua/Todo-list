@@ -17,6 +17,8 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch, isHome }) => {
   const handleSearch = () => {
     if(searchQuery){
       onSearchNote(searchQuery);
+    }else{
+      handleClearSearch();
     }
   };
 
@@ -26,7 +28,7 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch, isHome }) => {
   };
 
   return (
-    <div className="bg-white flex items-center justify-between px-6 py-2 drop-shadow-sm">
+    <div className="bg-white flex items-center justify-between px-4 sm:px-6 py-2 drop-shadow-sm shadow-[#dccfec]">
         <h2 className="text-xl font-semibold text-primary py-2">Notas</h2>
 
         {isHome && <SearchBar 

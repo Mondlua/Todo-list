@@ -10,7 +10,7 @@ function SearchBar({ value, onChange, handleSearch, onClearSearch }) {
             className="w-full text-xs bg-transparent py-[11px] outline-hidden"
             value={value}
             onChange={onChange}
-
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
 
         {value && (<IoMdClose className='text-xl text-[#8c6a9e] cursor-pointer hover:text-primary mr-3' onClick={onClearSearch}/>)}

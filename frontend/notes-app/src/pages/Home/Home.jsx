@@ -14,7 +14,6 @@ import { MdAdd } from 'react-icons/md';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//! HACERLO RESPONSIVE
 
 function Home() {
 
@@ -131,7 +130,7 @@ function Home() {
     }
   };
 
-  //* 
+  //* Fijar una nota
   const updateIsPinned = async (noteData) => {
     const noteId = noteData._id;
         try{
@@ -146,7 +145,7 @@ function Home() {
             }
         }
         catch(error){
-        //* Error al editar
+        //* Error al fijar
             console.log(error);
         }
   }
@@ -169,7 +168,7 @@ function Home() {
       <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch} isHome={isHome}/>
 
       <div className="container mx-auto">
-        {allNotes.length > 0 ? <div className="grid grid-cols-3 gap-4 mt-8">
+        {allNotes.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
           {allNotes.map((note,i) => (<NoteCard 
             key={note._id}
             title={note.title}
@@ -187,7 +186,7 @@ function Home() {
           imgSrc={ isSearch ? NoDataImg : AddNotesImg}
           message={isSearch ? 'Oops! No se han encontraron notas coincidentes.' : 'Comienza creando tu primer nota! Haz click en el botón "Añadir" para escribir tus tareas, ideas, lo que quieras.'}/>}
       </div>
-      <button className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-indigo-700 absolute right-10 bottom-10 cursor-pointer" onClick={()=>{
+      <button className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-indigo-700 fixed right-6 bottom-6 sm:right-10 sm:bottom-10 cursor-pointer" onClick={()=>{
         setOpenAddEditModal({ isShow: true, type: 'add', data: null });
       }}>
         <MdAdd className='text-[32px] text-white' />
@@ -199,10 +198,13 @@ function Home() {
         style={{
           overlay: {
             backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           },
         }}
         contentLabel=''
-        className='w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5'
+        className='w-[90%] sm:w-[70%] md:w-[50%] lg:w-[40%] max-w-xl max-h-screen bg-white rounded-md p-5 overflow-auto'
       >
         <AddEditNotes 
           type={openAddEditModal.type}
