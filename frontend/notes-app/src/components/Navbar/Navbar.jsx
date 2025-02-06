@@ -28,16 +28,25 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch, isHome }) => {
   };
 
   return (
-    <div className="bg-white flex items-center justify-between px-4 sm:px-6 py-2 drop-shadow-sm shadow-[#dccfec]">
-        <h2 className="text-xl font-semibold text-primary py-2">Notas</h2>
+    <nav className="bg-white flex items-center justify-between px-4 sm:px-6 py-2 drop-shadow-sm shadow-[#dccfec]">
+      <h2 className="text-xl font-semibold text-primary">Notas</h2>
 
-        {isHome && <SearchBar 
-          value={searchQuery} 
-          onChange={({target}) => {setSearchQuery(target.value)}}
-          handleSearch={handleSearch}
-          onClearSearch={onClearSearch}/>}
-        {isHome && <ProfileInfo userInfo={userInfo} onLogout={onLogout}/>}
-    </div>
+      {isHome &&
+        <div className="flex flex-grow justify-end max-w-md mr-3 sm:mr-0">
+            <SearchBar
+            value={searchQuery} 
+            onChange={({target}) => {setSearchQuery(target.value)}}
+            handleSearch={handleSearch}
+            onClearSearch={onClearSearch}
+            />
+        </div>
+      }
+
+      {isHome &&
+        <ProfileInfo userInfo={userInfo} onLogout={onLogout}/>
+      }
+
+    </nav>
   )
 }
 

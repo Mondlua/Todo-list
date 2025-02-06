@@ -2,7 +2,7 @@ import { getInitials } from "../../utils/helper";
 
 const ProfileInfo = ({ userInfo, onLogout}) => {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 place-self-end">
         <div className="w-12 h-12 flex items-center justify-center rounded-full text-primary font-semibold bg-[#f1eaf7]">{getInitials(userInfo?.fullName || '')}</div>
         <div>
             <p className="text-sm font-semibold text-primary"> {userInfo?.fullName || "Usuario"}</p>
